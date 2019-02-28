@@ -6,6 +6,7 @@
     Dim pic_info As String
     Dim slength As Integer
     Dim ArrayIN(7999, 99) As String
+    Dim ArrayOUT(8000)
 
 
     Sub Main()
@@ -95,6 +96,8 @@
     End Sub
     Sub Brain()
         Dim num1, num2 As Integer
+        Dim TotalSlides As Integer = 0
+        Dim SlideCounter As Integer = 0
         Dim maxTagsfiles As Integer = 0
         Dim maxScoreGetter As Integer = 1
         Dim maxScoreOptained As Integer
@@ -109,11 +112,12 @@
         num1 = maxTagsfiles
         num2 = 0
         Do
-            maxScoreOptained = Calc_Score(num1, num2)
+            ArrayOUT(SlideCounter) = num1
+            maxScoreOptained = Calculate_Score(num1, num2)
             For i = 2 To photo_num
                 If ArrayIN(i, 0) <> 1 Then
                     num2 = i
-                    currentScore = Calc_Score(num1, num2)
+                    currentScore = Calculate_Score(num1, num2)
                     If currentScore <> 0 Then
                         If currentScore > maxScoreOptained Then
                             maxScoreOptained = currentScore
@@ -124,7 +128,9 @@
                 End If
             Next
             num1 = maxScoreGetter
+            TotalSlides = TotalSlides + 1
         Loop Until counter = 0
+        ArrayOUT(0) = TotalSlides
     End Sub
 
     Function Calculate_Score(ByVal PhotoID_1, ByVal PhotoID_2)
@@ -140,14 +146,14 @@
         Dim greatest As Integer = 0
         Dim min As Integer = 0
         Dim found As Boolean = False
-        While ArrayIN(PhotoID_1, counter1) <> "" Do
+        Do While ArrayIN(PhotoID_1, counter1) <> ""
             m1 = m1 + 1
             counter1 = counter1 + 1
-        End While
-        While ArrayIN(PhotoID_2, counter2) <> "" Do
+        Loop
+        Do While ArrayIN(PhotoID_2, counter2) <> ""
             m2 = m2 + 1
             counter2 = counter2 + 1
-        End While
+        Loop
         For i = 1 To m1
             For j = 1 To m2
                 If ArrayIN(PhotoID_1, i + 4) = ArrayIN(PhotoID_2, j + 4) Then
