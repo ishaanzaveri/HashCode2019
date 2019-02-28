@@ -13,10 +13,10 @@ Module Module1
     Sub Main()
         'Zaveri In
         'Stark in
+        FileReading()
+        Brain()
 
-
-
-
+        Console.ReadLine()
     End Sub
 
     Sub FileReading()
@@ -73,14 +73,13 @@ Module Module1
             Next
 
             column = 2
-
-            fileReader.Close()
         Next
+        fileReader.Close()
     End Sub
     Sub Brain()
         Dim num1, num2 As Integer
         Dim TotalSlides As Integer = 0
-        Dim SlideCounter As Integer = 0
+        Dim SlideCounter As Integer = 1
         Dim maxTagsfiles As Integer = 0
         Dim maxScoreGetter As Integer = 1
         Dim maxScoreOptained As Integer
