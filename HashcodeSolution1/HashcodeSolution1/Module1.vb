@@ -161,7 +161,7 @@
                 End If
             Next
             If found = True Then
-                common_counter = common_counter + 1
+                common_counter = common_counter + 1 ' shouldnt this be inside 
             Else
                 f_photo_tags = f_photo_tags + 1
             End If
