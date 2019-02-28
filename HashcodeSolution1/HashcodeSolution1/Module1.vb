@@ -66,7 +66,16 @@
                     WritetoArray = ""
                 End If
             Next
+<<<<<<< HEAD
             column = 2
+=======
+            If found = True Then
+                common_counter = common_counter + 1
+            Else
+                f_photo_tags = f_photo_tags + 1
+            End If
+            found = False
+>>>>>>> parent of 96435af... rayhaan errors
         Next
 
         'Loop
