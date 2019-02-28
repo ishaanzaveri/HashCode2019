@@ -104,7 +104,7 @@
         Dim currentScore As Integer
         Dim counter As Integer = 0
         For i = 0 To photo_num
-            If ArrayIN(i, 2) > ArrayIN(maxTagsfiles, 2) Then
+            If CInt(ArrayIN(i, 2)) > CInt(ArrayIN(maxTagsfiles, 2)) Then
                 maxTagsfiles = i
             End If
         Next
@@ -115,7 +115,7 @@
             ArrayOUT(SlideCounter) = num1
             maxScoreOptained = Calculate_Score(num1, num2)
             For i = 2 To photo_num
-                If ArrayIN(i, 0) <> 1 Then
+                If ArrayIN(i, 0) <> "1" Then
                     num2 = i
                     currentScore = Calculate_Score(num1, num2)
                     If currentScore <> 0 Then
@@ -146,11 +146,11 @@
         Dim greatest As Integer = 0
         Dim min As Integer = 0
         Dim found As Boolean = False
-        Do While ArrayIN(PhotoID_1, counter1) <> ""
+        Do While ArrayIN(PhotoID_1, counter1) <> "" 'counter = m1 vice versa 
             m1 = m1 + 1
             counter1 = counter1 + 1
         Loop
-        Do While ArrayIN(PhotoID_2, counter2) <> ""
+        Do While ArrayIN(PhotoID_2, counter2) <> "" ' counter = m2 vice versa 
             m2 = m2 + 1
             counter2 = counter2 + 1
         Loop
@@ -167,7 +167,7 @@
             End If
             found = False
         Next
-        If m1 > m2 Then
+        If m1 > m2 Then ' equal then m2 ?
             greatest = m1
         Else
             greatest = m2
@@ -182,4 +182,7 @@
         End If
         Calculate_Score = min
     End Function
+    Sub FileOutput()
+
+    End Sub
 End Module
