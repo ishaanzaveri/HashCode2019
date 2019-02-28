@@ -126,4 +126,54 @@
             num1 = maxScoreGetter
         Loop Until counter = 0
     End Sub
+
+    Function Calculate_Score(ByVal PhotoID_1, ByVal PhotoID_2)
+        Dim common_counter As Integer = 0
+        Dim f_photo_tags As Integer = 0
+        Dim s_photo_tags As Integer = 0
+        Dim m1 As Integer = 0
+        Dim m2 As Integer = 0
+        Dim i As Integer = 0
+        Dim j As Integer = 0
+        Dim counter1 As Integer = 4
+        Dim counter2 As Integer = 4
+        Dim greatest As Integer = 0
+        Dim min As Integer = 0
+        Dim found As Boolean = False
+        While ArrayIN(PhotoID_1, counter1) <> "" Do
+            m1 = m1 + 1
+            counter1 = counter1 + 1
+        End While
+        While ArrayIN(PhotoID_2, counter2) <> "" Do
+            m2 = m2 + 1
+            counter2 = counter2 + 1
+        End While
+        For i = 1 To m1
+            For j = 1 To m2
+                If ArrayIN(PhotoID_1, i + 4) = ArrayIN(PhotoID_2, j + 4) Then
+                    found = True
+                End If
+            Next
+            If found = True Then
+                common_counter = common_counter + 1
+            Else
+                f_photo_tags = f_photo_tags + 1
+            End If
+            found = False
+        Next
+        If m1 > m2 Then
+            greatest = m1
+        Else
+            greatest = m2
+        End If
+        s_photo_tags = greatest - (f_photo_tags + common_counter)
+        If (common_counter < f_photo_tags) And (common_counter < s_photo_tags) Then
+            min = common_counter
+        ElseIf (f_photo_tags < common_counter) And (f_photo_tags < s_photo_tags) Then
+            min = f_photo_tags
+        Else
+            min = s_photo_tags
+        End If
+        Calculate_Score = min
+    End Function
 End Module
