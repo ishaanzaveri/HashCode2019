@@ -24,16 +24,17 @@
         num1 = maxTagsfiles
         num2 = 0
         Do
-
             maxScoreOptained = Calc_Score(num1, num2)
             For i = 2 To NumPhotos - 1
-                num2 = i
-                currentScore = Calc_Score(num1, num2)
-                If currentScore <> -1 Then
-                    If currentScore > maxScoreOptained Then
-                        maxScoreOptained = currentScore
-                        maxScoreGetter = i
-                        counter = counter + 1
+                If ArrayIN(i, 1) <> 1 Then
+                    num2 = i
+                    currentScore = Calc_Score(num1, num2)
+                    If currentScore <> 0 Then
+                        If currentScore > maxScoreOptained Then
+                            maxScoreOptained = currentScore
+                            maxScoreGetter = i
+                            counter = counter + 1
+                        End If
                     End If
                 End If
             Next
