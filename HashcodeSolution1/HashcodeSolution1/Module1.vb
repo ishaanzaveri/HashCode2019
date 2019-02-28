@@ -11,6 +11,7 @@
     Sub Main()
         'Zaveri In
         'Stark in
+<<<<<<< HEAD
 
 
         '  Dim FileReader1 As IO.StreamReader
@@ -90,6 +91,43 @@
             Counterj = Counterj + 1
         Loop
         fileReader.Close()
-    End Sub
+=======
+        'Rayhaan In
 
+
+
+>>>>>>> 22aa862a8a53f83147e68db8910d15e1a050acab
+    End Sub
+    Sub Brain()
+        Dim num1, num2 As Integer
+        Dim maxTagsfiles As Integer = 0
+        Dim maxScoreGetter As Integer = 1
+        Dim maxScoreOptained As Integer
+        Dim currentScore As Integer
+        Dim counter As Integer = 0
+        For i = 0 To NumPhotos - 1
+            If ArrayIN(i, 1) > ArrayIN(maxTagsfiles, 1) Then
+                maxTagsfiles = i
+            End If
+        Next
+
+        num1 = maxTagsfiles
+        num2 = 0
+        Do
+
+            maxScoreOptained = Calc_Score(num1, num2)
+            For i = 2 To NumPhotos - 1
+                num2 = i
+                currentScore = Calc_Score(num1, num2)
+                If currentScore <> -1 Then
+                    If currentScore > maxScoreOptained Then
+                        maxScoreOptained = currentScore
+                        maxScoreGetter = i
+                        counter = counter + 1
+                    End If
+                End If
+            Next
+            num1 = maxScoreGetter
+        Loop Until counter = 0
+    End Sub
 End Module
