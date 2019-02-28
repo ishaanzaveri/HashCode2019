@@ -1,6 +1,6 @@
 ﻿Module Module1
 
-    Dim photo_num As Integer
+    Dim photo_num As Integer = 7999
     Dim tag_number As Integer
     Dim column As Integer
     Dim pic_info As String
@@ -11,7 +11,7 @@
     Sub Main()
         'Zaveri In
         'Stark in
-<<<<<<< HEAD
+
 
 
         '  Dim FileReader1 As IO.StreamReader
@@ -91,12 +91,7 @@
             Counterj = Counterj + 1
         Loop
         fileReader.Close()
-=======
-        'Rayhaan In
 
-
-
->>>>>>> 22aa862a8a53f83147e68db8910d15e1a050acab
     End Sub
     Sub Brain()
         Dim num1, num2 As Integer
@@ -105,8 +100,8 @@
         Dim maxScoreOptained As Integer
         Dim currentScore As Integer
         Dim counter As Integer = 0
-        For i = 0 To NumPhotos - 1
-            If ArrayIN(i, 1) > ArrayIN(maxTagsfiles, 1) Then
+        For i = 0 To photo_num
+            If ArrayIN(i, 2) > ArrayIN(maxTagsfiles, 2) Then
                 maxTagsfiles = i
             End If
         Next
@@ -115,8 +110,8 @@
         num2 = 0
         Do
             maxScoreOptained = Calc_Score(num1, num2)
-            For i = 2 To NumPhotos - 1
-                If ArrayIN(i, 1) <> 1 Then
+            For i = 2 To photo_num
+                If ArrayIN(i, 0) <> 1 Then
                     num2 = i
                     currentScore = Calc_Score(num1, num2)
                     If currentScore <> 0 Then
